@@ -1,3 +1,5 @@
+![Rock in Rio Doce](public/banner.png)
+
 # Rock in Rio Doce 🦀
 
 O maior festival que nunca aconteceu, em Rio Doce, Olinda – PE. Sim, esse Rio Doce.
