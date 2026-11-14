@@ -1,27 +1,12 @@
-import { Routes, Route } from 'react-router-dom'
-import Header from './components/Header.jsx'
-import Footer from './components/Footer.jsx'
-import Inicio from './pages/Inicio.jsx'
-import Lineup from './pages/Lineup.jsx'
-import Ingressos from './pages/Ingressos.jsx'
-import Carrinho from './pages/Carrinho.jsx'
-
-// O Header e o Footer aparecem em todas as páginas.
-// Só o conteúdo do <main> muda de acordo com o endereço.
+// Ponto de partida. Siga o roteiro do README.md, começando pelo Passo 0.
 function App() {
   return (
-    <>
-      <Header />
-      <main className="container">
-        <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/lineup" element={<Lineup />} />
-          <Route path="/ingressos" element={<Ingressos />} />
-          <Route path="/carrinho" element={<Carrinho />} />
-        </Routes>
-      </main>
-      <Footer />
-    </>
+    <main className="container">
+      <section className="pagina">
+        <h2>Rock in Rio Doce</h2>
+        <p className="descricao">Se você está vendo esta mensagem, o projeto está rodando. Bora construir!</p>
+      </section>
+    </main>
   )
 }
 
