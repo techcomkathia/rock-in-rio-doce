@@ -1,4 +1,4 @@
-![Rock in Rio Doce](public/banner.png)
+![Rock in Rio Doce: o site aberto num tablet](docs/telas/capa.png)
 
 # Rock in Rio Doce 🦀
 
