@@ -1,68 +1,487 @@
+/* =========================================================
+   ROCK IN RIO DOCE — estilos do site
+   Este arquivo já vem pronto. Seu trabalho é criar os
+   componentes React usando os nomes de classe daqui.
+   ========================================================= */
+
+
+/* ---------- 1. Cores e fontes (variáveis) ---------- */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --fundo: #070b24;          /* azul-marinho da noite */
+  --cartao: #0f1640;         /* fundo dos cards */
+  --texto: #f2f4ff;          /* texto principal */
+  --texto-suave: #a3abdc;    /* textos secundários */
+  --borda: #28327a;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --azul: #2f7bff;           /* luz do palco */
+  --rosa: #ff3d8b;           /* fumaça */
+  --vermelho: #ff3b2a;       /* títulos */
+  --botao: #b0302a;          /* botões */
+  --botao-hover: #c43a32;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --fonte-titulo: 'Anton', Impact, 'Arial Narrow', sans-serif;
+  --fonte-texto: 'DM Sans', system-ui, Arial, sans-serif;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+
+/* ---------- 2. Base ---------- */
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte-texto);
+  font-size: 16px;
+  line-height: 1.55;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Deixa o footer sempre no fim da tela */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+}
+
+/* Centraliza o conteúdo e dá espaço nas laterais */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+h2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  font-size: 2rem;
+  color: var(--vermelho);
+  margin: 0 0 6px;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+a {
+  color: var(--texto);
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.pagina {
+  padding-top: 28px;
+  padding-bottom: 24px;
+}
+
+.descricao {
+  color: var(--texto-suave);
+  margin: 0 0 20px;
+}
+
+.aviso {
+  color: var(--rosa);
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+
+/* ---------- 3. Botão padrão ---------- */
+.botao {
+  background: var(--botao);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 700;
+}
+
+.botao:hover {
+  background: var(--botao-hover);
+}
+
+
+/* ---------- 4. Header (componente Header) ---------- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--fundo);
+  border-bottom: 2px solid var(--azul);
+}
+
+.header-conteudo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.logo {
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  color: var(--vermelho);
+  text-decoration: none;
+  margin-right: auto;   /* empurra o resto para a direita */
+}
+
+.menu {
+  display: flex;
+  gap: 4px;
+}
+
+.menu a {
+  color: var(--texto);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  opacity: 0.8;
+}
+
+.menu a:hover {
+  opacity: 1;
+}
+
+/* "active" é colocada automaticamente pelo NavLink */
+.menu a.active {
+  background: var(--botao);
+  font-weight: 700;
+  opacity: 1;
+}
+
+.botao-carrinho {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--texto);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: 2px solid var(--borda);
+  border-radius: 999px;
+  padding: 4px 6px 4px 12px;
+}
+
+.botao-carrinho:hover,
+.botao-carrinho.active {
+  border-color: var(--rosa);
+}
+
+.contador {
+  background: var(--rosa);
+  color: #fff;
+  border-radius: 999px;
+  min-width: 26px;
+  padding: 1px 8px;
+  text-align: center;
+  font-weight: 700;
+}
+
+
+/* ---------- 5. Footer (componente Footer) ---------- */
+.footer {
+  color: var(--texto-suave);
+  font-size: 0.65rem;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.footer p {
+  margin: 0 auto;
+}
+
+
+/* ---------- 6. Página Início ---------- */
+.banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  border: 2px solid var(--borda);
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+}
+
+.info p {
+  margin: 0;
+}
+
+.atalhos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.atalho {
+  display: block;
+  padding: 16px;
+  background: var(--cartao);
+  border: 2px solid var(--borda);
+  border-radius: 14px;
+  text-decoration: none;
+}
+
+.atalho:hover {
+  border-color: var(--rosa);
+}
+
+.atalho strong {
+  display: block;
+  font-size: 1.1rem;
+}
+
+.atalho span {
+  color: var(--texto-suave);
+}
+
+
+/* ---------- 7. Página Line-up ---------- */
+.abas {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.aba {
+  background: var(--cartao);
+  color: var(--texto);
+  border: 2px solid var(--borda);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 700;
+}
+
+.aba small {
+  font-weight: 400;
+  color: var(--texto-suave);
+  margin-left: 6px;
+}
+
+.aba-ativa {
+  background: var(--azul);
+  border-color: var(--azul);
+}
+
+.aba-ativa small {
+  color: #fff;
+}
+
+.lista-shows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--rosa);
+}
+
+.show {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--borda);
+}
+
+.horario {
+  color: var(--texto-suave);
+}
+
+.artista {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.palco {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--texto-suave);
+}
+
+/* Quem fecha a noite */
+.show-destaque .artista {
+  font-family: var(--fonte-titulo);
+  font-weight: 400;
+  font-size: 1.45rem;
+  color: var(--vermelho);
+}
+
+.cards-passe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.card-passe {
+  display: grid;
+  gap: 8px;
+  padding: 16px 20px;
+  background: var(--cartao);
+  border: 2px solid var(--azul);
+  border-radius: 14px;
+}
+
+.preco {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+
+/* ---------- 8. Página Ingressos ---------- */
+.lotes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.lote {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 16px 18px;
+  background: var(--cartao);
+  border: 2px solid var(--borda);
+  border-radius: 14px;
+  text-decoration: none;
+}
+
+.etiqueta {
+  justify-self: start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--texto-suave);
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.linha-preco {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+.linha-preco strong {
+  color: var(--texto);
+}
+
+/* Lote à venda (é um link) */
+.lote-atual {
+  border-color: var(--botao);
+}
+
+.lote-atual:hover {
+  border-color: var(--rosa);
+}
+
+.lote-atual .etiqueta {
+  background: var(--botao);
+  border-color: var(--botao);
+  color: #fff;
+}
+
+/* Lote esgotado: preço riscado */
+.lote-esgotado strong {
+  text-decoration: line-through;
+  color: var(--texto-suave);
+}
+
+.chamada {
+  font-weight: 700;
+  color: var(--rosa);
+}
+
+.observacao {
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+  margin-top: 16px;
+}
+
+
+/* ---------- 9. Página Carrinho ---------- */
+.itens-carrinho {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.item-carrinho {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 10px 10px 16px;
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+}
+
+.botao-remover {
+  background: none;
+  border: none;
+  color: var(--rosa);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 2px solid var(--azul);
+}
+
+.total strong {
+  font-size: 1.4rem;
+}
+
+
+/* ---------- 10. Celular (telas até 640px) ---------- */
+@media (max-width: 640px) {
+  .atalhos,
+  .cards-passe,
+  .lotes {
+    grid-template-columns: 1fr;
   }
-  a:hover {
-    color: #747bff;
+
+  .show {
+    grid-template-columns: 52px 1fr;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .palco {
+    grid-column: 2;
   }
 }
